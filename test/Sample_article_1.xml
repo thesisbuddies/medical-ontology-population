@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<article>
+<Entity Type="Condition">Pellagra</Entity> 
+<Entity Type="Nutrient" Quantity="Deficient">niacin </Entity>
+<Entity Type="Nutrient" Quantity="Deficient">tryptophan</Entity> 
+<Entity Type="Food" Action="Avoid">corn</Entity>
+</article>

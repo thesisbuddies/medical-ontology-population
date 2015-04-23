@@ -1,0 +1,68 @@
+Phase:nutrientdeficientphase
+Input: punctuation_Period Lookup Token Entity
+Options: control = appelt
+
+Rule: NutrientDeficient1
+(
+	{Token.string == "lack"}
+	{Token.string == "of"}
+)
+(
+	{Entity.Type == Nutrient}
+):deficient1
+--> 
+:deficient1.NutrientDeficient = {kind = "deficient", rule = "NutrientDeficient"}
+
+Rule: NutrientDeficient2
+(
+	{Token.string == "deficient"}
+	{Token.string == "in"}
+)
+(
+	{Entity.Type == Nutrient}
+):deficient2
+--> 
+:deficient2.NutrientDeficient = {kind = "deficient", rule = "NutrientDeficient"}
+
+Rule: NutrientDeficient3
+(
+	{Token.string == "lacking"}
+)
+(
+	{Entity.Type == Nutrient}
+):deficient3
+--> 
+:deficient3.NutrientDeficient = {kind = "deficient", rule = "NutrientDeficient"}
+
+Rule: NutrientDeficient4
+(
+	{Token.string == "need"} | {Token.string == "needs"}
+)
+(
+	{Token.string == "in"}
+)
+(
+	{Entity.Type == Nutrient}
+):deficient4
+--> 
+:deficient4.NutrientDeficient = {kind = "deficient", rule = "NutrientDeficient"}
+
+Rule: NutrientDeficient5
+(
+	{Token.string == "low"}
+)
+(
+	{Entity.Type == Nutrient}
+):deficient5
+--> 
+:deficient5.NutrientDeficient = {kind = "deficient", rule = "NutrientDeficient"}
+
+Rule: NutrientDeficient6
+(
+	{Entity.Type == Nutrient}
+):deficient6
+(
+	{Entity.string == "deficiency"}
+)
+--> 
+:deficient6.NutrientDeficient = {kind = "deficient", rule = "NutrientDeficient"}

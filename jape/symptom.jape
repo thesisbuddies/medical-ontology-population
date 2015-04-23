@@ -1,0 +1,122 @@
+Phase:symptomPhase
+Input: Lookup Token newLine Entity
+Options: control = appelt
+
+Macro: punctuation
+({Token.string == ","})
+
+Rule: Symptom
+(
+	(({Entity} {Token.string == "causes"}) | ({Token.string == "symptoms"} {Token.string == "include"}))
+):cause
+
+(
+	({Token.kind == word})*:Symp
+	({Token.string == ","})
+)*
+
+(
+	({Token.kind == word})*:Symp1
+	({Token.string == "."})
+)
+-->
+	
+	:cause.Cause = {rule = "RuleCause"}, 
+	:Symp.Symptom = {rule = "Symptom"},
+	:Symp1.Symptom = {rule = "Symptom"}
+
+Rule: Period
+(
+	{Token.string == "."}
+):period
+-->
+
+	:period.punctuation_Period = {rule ="Period"}
+
+Rule: Symptom2
+(
+	({Token.string == "symptoms"} )
+	({Token.kind == word})*
+):cause1
+
+(
+	({Token.string == ":"})
+)
+
+(
+	({newLine})*
+	({Token.kind == word})*
+	({Token.string == "("} | {Token.string == ")"} | {Token.string == ","} | {Token.string == "-"})*
+)*:Symp2
+
+(
+	({Token.string == "."} | {Token.string == "exams"} | {newLine})
+)
+
+
+-->
+:cause1.Cause = {rule="RuleCause"},
+:Symp2.Symptom = {rule="Symptom"}
+
+Rule: RuleCause
+(
+	({Token.string == "causes"} | {Token.string == "symptoms"})
+):cause
+-->
+:cause.Cause = {rule=RuleCause}
+
+Rule: Symptom3
+(
+	({Token.string == "symptoms"} )
+	({Token.string == "of"})
+):cause1
+
+(
+	({Entity})
+)
+
+(
+	({newLine})*
+	({Token.kind == word})*
+	({Token.string == "("} | {Token.string == ")"} | {Token.string == ","} | {Token.string == "-"} | {Token.string == "."} | {Token.string == "/"})*
+)*:Symp3
+
+(
+	({Token.string == "."} | {Token.string == "exams"} | {Token.string == "treatment"})
+)
+
+
+-->
+:cause1.Cause = {rule="RuleCause"},
+:Symp3.Symptom = {rule="Symptom"}
+
+Rule: Symptom4
+(
+	({Token.string == "symptoms"} )
+	({Token.kind == word} | {Token.string == ","})*
+):cause4
+
+(
+	({Token.string == ":"})
+)
+(
+	(
+		({newLine})*
+		({Token.kind == word})
+		({Token.kind == symbol})
+		({Token.kind == symbol})
+	)
+
+	(
+		({Token.kind == word})*
+		({Token.string == "("} | {Token.string == ")"} | {Token.string == ","} | {Token.string == "-"} | {Token.string == "."} | {Token.string == "/"} | {newLine})*
+	)*:Symp4
+)*
+(
+	({Token.string == "."} | {Token.string == "exams"} | {Token.string == "treatment"} | {Token.kind == word})
+)
+
+
+-->
+:cause4.Cause = {rule="RuleCause"},
+:Symp4.Symptom = {rule="Symptom"}

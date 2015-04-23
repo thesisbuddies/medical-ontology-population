@@ -1,0 +1,19 @@
+Phase:foodneededphase
+Input: punctuation_Period Lookup Token 
+Options: control = appelt
+
+Rule: FoodNeeded
+(
+	({Token.string == "."})
+)
+(
+	({Token.kind == word})*
+	({Token.string == ","})*
+)*:food
+(
+	({Token.string == "are"})
+	({Token.kind == word})*
+	({Token.string == "sources"})
+)
+-->
+:food.Need = {kind = "need", rule = "FoodNeeded"}

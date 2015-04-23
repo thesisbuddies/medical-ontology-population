@@ -1,0 +1,51 @@
+Phase: nutrientexcessphase
+Input: Lookup Token Entity newLine
+Options: control = appelt
+
+Rule: NutrientExcess
+(
+  {Entity.Type == Nutrient}
+):nabun1
+(
+  {Token.kind == word}
+  {Token.string == "high"}
+)
+-->
+ :nabun1.NutrientExcess = {kind = excess, rule = "NutrientExcess"}
+
+Rule: NutrientExcess2
+(
+  ({Token.string =~ "[Tt]oo"} | {Token.string =~ "[Hh]igh"} | {Token.string =~ "[Ee]xcess"})
+  ({Token.string == "in" | {Token.string == "much"})
+)
+(
+  {Entity.Type == Nutrient}
+):nabun2
+
+-->
+ :nabun2.NutrientExcess = {kind = excess, rule = "NutrientExcess"}
+
+Rule: NutrientExcess3
+(
+  {Token.string =~ "[Ss]hould"}
+  {Token.string == "avoid"}
+  {Token.kind == word}*
+)
+(
+  {Entity.Type == Nutrient}
+):nabun3
+-->
+ :nabun3.NutrientExcess = {kind = excess, rule = "NutrientExcess"}
+
+ Rule: NutrientExcess4
+(
+  {Token.string == "reduce"}
+)
+(
+  {Entity.Type == Nutrient}
+):nabun4
+(
+  {Token.string == "consumption"}
+)
+-->
+ :nabun4.NutrientExcess = {kind = excess, rule = "NutrientExcess"}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+	<Entity Type="Condition">Scurvy</Entity>
+	<Entity Type="Nutrient" Quantity="Deficient">vitamin C</Entity>  
+	<Entity Type="Symptom">weakness</Entity>
+	<Entity Type="Symptom">swollen joints</Entity>
+	<Entity Type="Symptom">muscle hardness</Entity>
+	<Entity Type="Symptom">gum problems</Entity>
+	<Entity Type="Symptom">tooth loss</Entity>
+	<Entity Type="Symptom">slow healing of wounds</Entity> 
+	<Entity Type="Nutrient">vitamin C</Entity>  
+	<Entity Type="Condition">scurvy</Entity> 
+	<Entity Type="Food" Action="Need">oranges</Entity>  
+	<Entity Type="Food" Action="Need">grapefruits</Entity>
+	<Entity Type="Food" Action="Need">lemons</Entity>
+	<Entity Type="Food" Action="Need">limes</Entity>  
+	<Entity Type="Food">tangerines</Entity>
+	<Entity Type="Food" Action="Need">berries</Entity> 
+	<Entity Type="Food" Action="Need">melons</Entity>  
+	<Entity Type="Food" Action="Need">red bell peppers</Entity>
+	<Entity Type="Food" Action="Need">green bell peppers</Entity>  
+	<Entity Type="Food" Action="Need">potatoes</Entity> 
+	<Entity Type="Food" Action="Need">tomatoes</Entity> 
+	<Entity Type="Nutrient">vitamin C</Entity>  
+	<Entity Type="Condition">Scurvy</Entity>  
+	<Entity Type="Nutrient">vitamin C</Entity>  
+	<Entity Type="Nutrient">ascorbic acid</Entity>  
+</article>

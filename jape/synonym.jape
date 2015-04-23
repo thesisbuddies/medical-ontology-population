@@ -1,0 +1,18 @@
+Phase:synonymsphase
+Input: punctuation_Period Lookup Token newLine
+Options: control = appelt
+
+Rule: synonyms
+(
+	{Token.string  == "alternative"} {Token.string == "names"}
+):Alt
+(
+	(({Token.kind == word})* | {newLine} | 	{Token.kind == punctuation})
+)*:synonyms
+(
+	({newLine})
+)
+
+-->
+:Alt.AltNames = {},
+:synonyms.Synonyms = {kind = "synonyms"}

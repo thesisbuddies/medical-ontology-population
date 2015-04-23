@@ -1,0 +1,18 @@
+Phase:foodavoidphase
+Input: punctuation_Period Lookup Token Entity
+Options: control = appelt
+
+Rule: FoodAvoid
+(
+	({Token.string == "avoid"})
+)
+(
+	({Token.kind == word})*
+	({Entity.Type == Food})*
+	({Token.string == ","})*
+)
+(
+	{Token.string == "."}
+)
+-->
+:food.Avoid = {kind = "avoid", rule = "FoodAvoid"}

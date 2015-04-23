@@ -1,0 +1,21 @@
+Phase:newlinePhase
+Input: Lookup Token Entity newLine
+Options: control = appelt
+
+Rule: newLine
+(
+	({newLine})
+):newline
+
+-->
+	
+	:newline.newLine = {rule = "newLine"}
+
+Rule: Entity
+(
+	({Entity})
+):entity
+-->
+	:entity.Entity = {rule = "Entity"}
+
+
